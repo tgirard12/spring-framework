@@ -350,9 +350,9 @@ public abstract class RequestPredicates {
 	}
 
 
-	private static class HttpMethodPredicate implements RequestPredicate {
+	static class HttpMethodPredicate implements RequestPredicate {
 
-		private final Set<HttpMethod> httpMethods;
+		final Set<HttpMethod> httpMethods;
 
 		public HttpMethodPredicate(HttpMethod httpMethod) {
 			Assert.notNull(httpMethod, "HttpMethod must not be null");
@@ -384,9 +384,9 @@ public abstract class RequestPredicates {
 	}
 
 
-	private static class PathPatternPredicate implements RequestPredicate {
+	static class PathPatternPredicate implements RequestPredicate {
 
-		private final PathPattern pattern;
+		final PathPattern pattern;
 
 		public PathPatternPredicate(PathPattern pattern) {
 			Assert.notNull(pattern, "'pattern' must not be null");
@@ -430,7 +430,7 @@ public abstract class RequestPredicates {
 	}
 
 
-	private static class HeadersPredicate implements RequestPredicate {
+	static class HeadersPredicate implements RequestPredicate {
 
 		private final Predicate<ServerRequest.Headers> headersPredicate;
 
@@ -451,9 +451,9 @@ public abstract class RequestPredicates {
 	}
 
 
-	private static class PathExtensionPredicate implements RequestPredicate {
+	static class PathExtensionPredicate implements RequestPredicate {
 
-		private final Predicate<String> extensionPredicate;
+		final Predicate<String> extensionPredicate;
 
 		public PathExtensionPredicate(Predicate<String> extensionPredicate) {
 			Assert.notNull(extensionPredicate, "Predicate must not be null");
@@ -474,9 +474,9 @@ public abstract class RequestPredicates {
 	}
 
 
-	private static class QueryParamPredicate implements RequestPredicate {
+	static class QueryParamPredicate implements RequestPredicate {
 
-		private final String name;
+		final String name;
 
 		private final Predicate<String> predicate;
 
@@ -506,9 +506,9 @@ public abstract class RequestPredicates {
 	 */
 	static class AndRequestPredicate implements RequestPredicate {
 
-		private final RequestPredicate left;
+		final RequestPredicate left;
 
-		private final RequestPredicate right;
+		final RequestPredicate right;
 
 		public AndRequestPredicate(RequestPredicate left, RequestPredicate right) {
 			Assert.notNull(left, "Left RequestPredicate must not be null");
@@ -540,9 +540,9 @@ public abstract class RequestPredicates {
 	 */
 	static class OrRequestPredicate implements RequestPredicate {
 
-		private final RequestPredicate left;
+		final RequestPredicate left;
 
-		private final RequestPredicate right;
+		final RequestPredicate right;
 
 		public OrRequestPredicate(RequestPredicate left, RequestPredicate right) {
 			Assert.notNull(left, "Left RequestPredicate must not be null");
@@ -574,7 +574,7 @@ public abstract class RequestPredicates {
 	}
 
 
-	private static class SubPathServerRequestWrapper implements ServerRequest {
+	static class SubPathServerRequestWrapper implements ServerRequest {
 
 		private final ServerRequest request;
 
